@@ -10,7 +10,8 @@ using namespace std;
 #define ub upper_bound
 #define bs binary_search
 #define MOD 1000000007
-
+//bipartite graph
+// no two adjacent node can have the same color doesnt need to be connected cannot contain odd cycles
 bool dfs(int n,vector<vector<int>>&arr,vector<int>&visited,int c,vector<int>&color)
 {   
     
