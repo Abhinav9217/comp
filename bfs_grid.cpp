@@ -1,3 +1,4 @@
+//not applied in weighted graph to find shortest path or minimum moves if weigted uses djkshatra 
 int vis[N][N], dist[N][N], ways[N][N];
 int dx[4]={-1, +1, 0, 0};
 int dy[4]={0, 0, +1, -1};
