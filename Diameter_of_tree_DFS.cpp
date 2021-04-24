@@ -1,87 +1,76 @@
-//Diameter of  a tree using dfs
-#include <iostream> 
-#include <limits.h> 
-#include <list> 
-using namespace std; 
+/*Look at Abhinav man, so Inspirational*/
+#pragma GCC optimize ("-O3")
+#include<bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+//#define f(i,x,n) for(ll i=x;i<n;i++)
+#define pb push_back
+#define mp make_pair
+#define debug(x) cout<<x<<"\n";
+#define lb lower_bound
+#define ub upper_bound
+#define bs binary_search
+#define mod 1000000007
+#define endl '\n'
+
+ll n,m,k,a,b,c,d,x,y,z,q,e,v;
+string s;
+vector<vector<int>> arr(100000);
+vector<int>visited(100000,0);
+ll ans=0;
+int temp=0;
+/* diamter of tree is the farthest path between any 2 nodes in a tree
+ novice approach run dfs n times to calculate farthest mode from every node n^2 approach
+ another approach we can calculate  the diameter in 2 dfs runs first take any node and let the farthest node from it be x
+ then calulate the distance of the node farthest from x that will be the diameter*/
+ void dfs(int n,int m)
+ {     
+      
+ 	 if(m>=temp)
+ 	 {
+ 	 	temp=m;
+ 	 	c=n;
+	  }
+	  visited[n]=1;
+	  for(int i=0;i<arr[n].size();i++)
+	  {
+	  	  b=arr[n][i];
+	  	  if(visited[b]==0)
+	  	  {
+	  	  	  dfs(b,m+1);
+			}
+	  }
+ }
+int  main()
+{
+     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+   //std::cout << fixed<< std::setprecision(9) << '\n';
   
-// Used to track farthest node. 
-int x; 
-  
-// Sets maxCount as maximum distance from node. 
-void dfsUtil(int node, int count, bool visited[], 
-                   int& maxCount, list<int>* adj) 
-{ 
-    visited[node] = true; 
-    count++; 
-    for (auto i = adj[node].begin(); i != adj[node].end(); ++i) { 
-        if (!visited[*i]) { 
-            if (count >= maxCount) { 
-                maxCount = count; 
-                x = *i; 
-            } 
-            dfsUtil(*i, count, visited, maxCount, adj); 
-        } 
-    } 
+   int  t;
+    t=1;
+    //cin>>t;
+    while(t--)
+    {   
+      ans=0;
+    cin>>v;
+    e=v-1;
+    c=0;
+    for(int i=0;i<e;i++)
+    {
+    	cin>>a>>b;
+    	arr[a].pb(b);
+    	arr[b].pb(a);
+	}
+	dfs(1,0);
+	for(int i=0;i<visited.size();i++)
+	{
+		 visited[i]=0;
+	}
+	temp=0;
+	dfs(c,0);
+	cout<<temp<<endl;
+  }
 } 
-  
-// The function to do DFS traversal. It uses recursive 
-// dfsUtil() 
-void dfs(int node, int n, list<int>* adj, int& maxCount) 
-{ 
-    bool visited[n + 1]; 
-    int count = 0; 
-  
-    // Mark all the vertices as not visited 
-    for (int i = 1; i <= n; ++i) 
-        visited[i] = false; 
-  
-    // Increment count by 1 for visited node 
-    dfsUtil(node, count + 1, visited, maxCount, adj); 
-} 
-  
-// Returns diameter of binary tree represented 
-// as adjacency list. 
-int diameter(list<int>* adj, int n) 
-{ 
-    int maxCount = INT_MIN; 
-  
-    /* DFS from a random node and then see 
-    farthest node X from it*/
-    dfs(1, n, adj, maxCount); 
-  
-    /* DFS from X and check the farthest node 
-    from it */
-    dfs(x, n, adj, maxCount); 
-  
-    return maxCount; 
-} 
-  
-/* Driver program to test above functions*/
-int main() 
-{ 
-    int n = 5; 
-  
-    /* Constructed tree is 
-         1 
-        / \ 
-        2    3 
-       / \ 
-      4   5 */
-    list<int>* adj = new list<int>[n + 1]; 
-  
-    /*create undirected edges */
-    adj[1].push_back(2); 
-    adj[2].push_back(1); 
-    adj[1].push_back(3); 
-    adj[3].push_back(1); 
-    adj[2].push_back(4); 
-    adj[4].push_back(2); 
-    adj[2].push_back(5); 
-    adj[5].push_back(2); 
-  
-  
-    /* maxCount will have diameter of tree */
-    cout << "Diameter of the given tree is "
-        << diameter(adj, n) << endl; 
-    return 0; 
-} 
+
+
+	
