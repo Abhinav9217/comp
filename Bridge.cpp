@@ -15,7 +15,9 @@ typedef std::complex<double> Complex;
 typedef std::valarray<Complex> CArray;
 
 using namespace std;
-
+/* A bridge is defined as an edge which when removed from the graph increases the number of connected components
+a backedge can never be a bridge because even if you remove that edge then also the graph is connected
+in array basically the intime*/
 
 vector<int> ar[100001];
 int in[100001] , low[100001] , vis[100001] , timer;
@@ -34,8 +36,7 @@ void dfs(int node , int par)
 		if(vis[child])
 		{
 			low[node] = min(low[node] , in[child]);
-			if(in[node] > in[child])
-			edgeList.push_back({node , child});
+			
 		}
 		else
 		{
@@ -46,7 +47,6 @@ void dfs(int node , int par)
 				return;
 			}
 			
-			edgeList.push_back({node , child});
 			low[node] = min(low[node] , low[child]);
 		}
 	}
