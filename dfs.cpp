@@ -1,4 +1,5 @@
 //also used to find single shortest path from source to any vertex only in tree
+// a graph is a tree if connected component is 1 and number of edges is vertes-1
 #pragma GCC optimize ("-O3")
 #include<bits/stdc++.h>
 typedef long long ll;
