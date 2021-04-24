@@ -1,11 +1,11 @@
-int vis[N], dist[N], ways[N];
+//used to find single source shortest path in a "GRAPH" dfs tree mein kar sakta hai sirf
+int vis[N], dist[N]
 vector<int> g[N];
 
 void bfs(int k)
 {
 	queue<int> q;
 	q.push(k);
-	ways[k]=1;
 	vis[k]=1;
 	while(!q.empty())
 	{
@@ -20,13 +20,7 @@ void bfs(int k)
 				ways[it]+=ways[node];
 				q.push(it);
 			}
-			else
-			{
-				if(dist[node]+1==dist[it])
-				{
-					ways[it]+=ways[node];
-				}
-			}
+
 		}
 	}
 }
