@@ -1,3 +1,4 @@
+//also used to find single shortest path from source to any vertex only in tree
 #pragma GCC optimize ("-O3")
 #include<bits/stdc++.h>
 typedef long long ll;
