@@ -10,6 +10,7 @@ using namespace std;
 #define ub upper_bound
 #define bs binary_search
 #define MOD 1000000007
+// in is indgree meaning number of edges towards that node the edges with indegree 1 will obviously appear in the beginning beacuse they have no dependency
  vector<vector<int>>arr(10000);
  vector<int>ans;
  vector<int>in(10000);
