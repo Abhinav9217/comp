@@ -1,5 +1,6 @@
 int n; // number of nodes
 //is_cutpoint can be used to just print hey this is a articulation point
+// the -1 condition is for root, root can only be a articulation point if nymber of forward edges from it are greater than one
 vector<vector<int>> adj; // adjacency list of graph
 
 vector<bool> visited;
