@@ -3,15 +3,14 @@ using namespace std;
 typedef long long ll;
  #define pb push_back
  long long temp=pow(10,9)+7;
- 
- int get(int*arr,int i)
+ vector<int>parent(100000);
+vector<int>size(100000,1)
+ int get(int n)
  {
- 	while(arr[i]!=i)
- 	{
- 		i=arr[i];
- 		
-	 }
-	 return i;
+ 	if(n==parent[n])
+		( return n)
+        return parent[n]=get(parent[n]); // this is path compression reduces time comp of get from n to logn what we are doing is we are updating
+	// the each element of the group to the parent of the group so when we find a parent of an element we will reach the parent faster
  }
 int main()	
 {   
@@ -21,10 +20,10 @@ int main()
  {
      int n;
 	 cin>>n;
-	 int*arr=new int[n+1];
+	 
 	 for(int i=1;i<=n;i++)
 	 {
-	 	arr[i]=i;
+	 	parent[i]=i;
 	 }
 	 int m;
 	 cin>>m;
@@ -32,32 +31,15 @@ int main()
 	 {
 	 	int a,b;
 	 	cin>>a>>b;
-	 	int a1=get(arr,a);
-	 	int b1=get(arr,b);
-	 	 arr[min(a1,b1)]=max(a1,b1);
-	 }
-	
-	int q;
-	cin>>q;
-	while(q--)
-	{
-		int a,b;
-		cin>>a>>b;
-		int a1=get(arr,a);
-		int b1=get(arr,b);
-		if(b1==a1)
-		{
-			cout<<"TIE";
-		}
-		else
-		{
-			if(a1>b1)
-			 cout<<a;
-			 else
-			 cout<<b;
-		}
-		cout<<endl;
-	}
+	 	int a1=get(a);
+	 	int b1=get(b);
+	 	if (a1 != b1) {
+        if (size[a1] < size[b1])
+            swap(a1, b1);
+        parent[b1] = a1;
+        size[a1] += size[b1]; //Union by size / rank
+//In this optimization we will change the union_set operation. To be precise, we will change which tree gets attached to the other one. In the naive implementation the second tree always got attached to the first one. In practice that can lead to trees containing chains of length O(n). With this optimization we will avoid this by choosing very carefully which tree gets attached.
+// basically always attach the smaller trees to bigger trees otherwise there wil be longer chains 			
 }
 	     
 }
