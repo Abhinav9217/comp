@@ -1,5 +1,6 @@
 /*Look at Abhinav man, so inspirational*/
 // shortest distance between any 2 node complextiy O(n^3)
+// 1e18 means there is no edge between those nodes
 #pragma GCC optimize ("-O3")
 #include<bits/stdc++.h>
 typedef long long ll;
