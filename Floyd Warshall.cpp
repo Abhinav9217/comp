@@ -67,7 +67,7 @@ int32_t main()
 	   	 {
 	   	 	for(int j=0;j<v;j++)
 	   	 	{
-	   	 		if(arr[i][k]==1e18||arr[j][k]==1e18)
+	   	 		if(arr[i][k]==1e18||arr[k][j]==1e18)
 	   	 		{
 	   	 			 continue;
 					}
